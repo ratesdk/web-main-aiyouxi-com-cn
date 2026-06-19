@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ratesdk.github.io/web-main-aiyouxi-com-cn/sitemap.xml
