@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>威廉希尔：赛前叙事</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f2f2f2;
+            font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+            color: #2d2d2d;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+        }
+
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* —— hero 开场 —— */
+        .hero {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 3rem 2.5rem 2.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.04);
+            border: 1px solid #e6e6e6;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .hero .short-sentence {
+            font-size: 1rem;
+            letter-spacing: 0.03em;
+            color: #7a7a7a;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            margin-bottom: 1.2rem;
+            color: #1f1f1f;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(145deg, #3a3a3a, #595959);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 0.2rem;
+            font-size: 1.05rem;
+            color: #3e3e3e;
+        }
+
+        .hero .link-inline {
+            margin-top: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .hero .link-inline a {
+            color: #3d3d3d;
+            text-decoration: none;
+            border-bottom: 1px solid #b0b0b0;
+            transition: border-color 0.2s, color 0.2s;
+            font-weight: 400;
+        }
+
+        .hero .link-inline a:hover {
+            color: #000;
+            border-bottom-color: #000;
+        }
+
+        /* —— 承接段落 —— */
+        .bridge {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.2rem 2.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #e9e9e9;
+            margin-bottom: 2.2rem;
+        }
+
+        .bridge p {
+            font-size: 1.02rem;
+            margin-bottom: 1.2rem;
+            text-indent: 2em;
+        }
+
+        .bridge p:last-child {
+            margin-bottom: 0;
+        }
+
+        .bridge a {
+            color: #2f2f2f;
+            border-bottom: 1px solid #9c9c9c;
+            text-decoration: none;
+            transition: border-color 0.15s;
+        }
+
+        .bridge a:hover {
+            border-bottom-color: #1a1a1a;
+        }
+
+        /* —— 特点卡片 —— */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #e4e4e4;
+            border-radius: 20px;
+            padding: 2rem 1.8rem 2rem 2rem;
+            flex: 1 1 260px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            transition: box-shadow 0.2s, transform 0.1s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+            transform: translateY(-2px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: #1b1b1b;
+            letter-spacing: 0.01em;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* —— 温和结尾 —— */
+        .closing {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.4rem 2.5rem;
+            border: 1px solid #e6e6e6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            margin-bottom: 2.2rem;
+        }
+
+        .closing p {
+            font-size: 1rem;
+            color: #3a3a3a;
+            margin-bottom: 1.2rem;
+        }
+
+        .closing p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .closing .soft-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.98rem;
+            color: #2c2c2c;
+            border-bottom: 1px solid #aaa;
+            text-decoration: none;
+        }
+
+        .closing .soft-link:hover {
+            border-bottom-color: #111;
+        }
+
+        .closing .footer-note {
+            font-size: 0.9rem;
+            color: #7f7f7f;
+            margin-top: 1.8rem;
+            border-top: 1px solid #ececec;
+            padding-top: 1.2rem;
+            text-align: right;
+            letter-spacing: 0.02em;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+
+            .hero {
+                padding: 2rem 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .bridge {
+                padding: 1.8rem 1.2rem;
+            }
+
+            .features {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .closing {
+                padding: 1.8rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero .short-sentence {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero / 开场短句 -->
+    <div class="hero">
+        <div class="short-sentence">—— 赛前，叙事始于冷静 ——</div>
+        <h1>从数据到判断<br><span>威廉希尔</span>的底层逻辑</h1>
+        <p>在竞技场之外，有一套更为缜密的推演系统——它无关激情与直觉，而是关于数字、趋势与长期视角。</p>
+        <div class="link-inline">
+            这背后，是 <a href="https://portal-index-williamhill.com">威廉希尔</a> 数十年沉淀的分析体系。
+        </div>
+    </div>
+
+    <!-- 承接段落：从关键词背后的主题展开 -->
+    <div class="bridge">
+        <p>
+            如果我们把每一场比赛看作一个独立的故事，那么隐藏在赔率背后的，其实是一套复杂的概率语言。早在现代体育数据化浪潮之前，<a href="https://portal-index-williamhill.com">威廉希尔</a> 就尝试用可量化的方式拆解不确定性——不是预测结果，而是理解各种可能性的权重。
+        </p>
+        <p>
+            这种思路延伸至许多领域：从球场的战术部署到选手的状态周期，甚至包括天气、裁判风格等边缘变量。每一个因子都被纳入模型，然后以清晰的数值呈现。这就是为什么许多资深爱好者不只关注胜负，更关注赔率结构本身透露的信息。
+        </p>
+    </div>
+
+    <!-- 特点列表 (卡片式) -->
+    <div class="features">
+        <div class="feature-card">
+            <h3>概率语言</h3>
+            <p>核心并非给出“谁赢”，而是呈现每一种情境发生的估算频率。数据背后是数十年的赛事统计与动态校正。</p>
+        </div>
+        <div class="feature-card">
+            <h3>长期主义</h3>
+            <p>单一场次充满噪音，但千场之后趋势会说话。威廉希尔体系强调样本量与时间跨度的价值，而非短期波动。</p>
+        </div>
+        <div class="feature-card">
+            <h3>透明框架</h3>
+            <p>从初始设定到变动调整，每一步都遵循既定算法。公开的变动轨迹，本身就是一种信息源。</p>
+        </div>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="closing">
+        <p>
+            当你不再把目光只锁定在终场哨响的那一刻，而是开始审视赛前那条缓慢变化的曲线，你便进入了另一种观察维度。威廉希尔所提供的，从来不是一个简单的结论，而是一整套理解不确定性的工具。
+        </p>
+        <p>
+            无论是新手还是长期关注者，都可以在它的框架下找到自己感兴趣的角度——但始终值得记住：数字只是地图，而地图不等于疆域。
+        </p>
+        <p>
+            了解更多关于分析与概率的叙述，可延伸阅读 <a href="https://portal-index-williamhill.com" class="soft-link">威廉希尔</a> 的索引页面。
+        </p>
+        <div class="footer-note">
+            —— 基于数据 · 保持克制 ——
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
