@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球探 · 信息卡片介绍页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-wrapper {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* 主视觉卡片 (hero) */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 3rem 2.5rem 2.8rem 2.5rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e9edf2;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            transition: box-shadow 0.2s;
+        }
+
+        .hero-card:hover {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: #eef3fa;
+            color: #2c4a7c;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            padding: 0.35rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+            border: 1px solid #dce3ed;
+        }
+
+        .hero-title {
+            font-size: 2.4rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #142334;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: #496285;
+            max-width: 600px;
+            margin: 0 auto 1.2rem auto;
+            line-height: 1.7;
+        }
+
+        .hero-link-sentence {
+            background: #f6f8fc;
+            padding: 0.9rem 1.8rem;
+            border-radius: 48px;
+            display: inline-block;
+            border: 1px solid #dde4ed;
+            font-size: 1rem;
+        }
+
+        .hero-link-sentence a {
+            color: #1a4a8a;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .hero-link-sentence a:hover {
+            border-bottom-color: #1a4a8a;
+        }
+
+        /* 分区网格 — 卡片式 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 1.8rem 2rem 1.8rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e5eaef;
+            transition: transform 0.15s, box-shadow 0.15s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.6rem;
+            line-height: 1;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #132433;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.01em;
+            border-left: 4px solid #cbd8e8;
+            padding-left: 0.75rem;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: #2d4059;
+            flex: 1;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-list {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .card-list li {
+            font-size: 0.92rem;
+            padding: 0.4rem 0 0.4rem 1.6rem;
+            position: relative;
+            color: #2d4059;
+            border-bottom: 1px dashed #eaedf2;
+        }
+
+        .card-list li:last-child {
+            border-bottom: none;
+        }
+
+        .card-list li::before {
+            content: "·";
+            position: absolute;
+            left: 0.4rem;
+            color: #6a7e9b;
+            font-weight: 700;
+        }
+
+        /* 适合人群 + 场景组合卡片 */
+        .audience-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2rem 2.2rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e5eaef;
+            margin-bottom: 2rem;
+            grid-column: 1 / -1;
+        }
+
+        .audience-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .audience-header span {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1d2e41;
+            border-bottom: 3px solid #d2dceb;
+            padding-bottom: 0.15rem;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .audience-item {
+            background: #f6f9fe;
+            border-radius: 16px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #e3eaf2;
+            font-size: 0.95rem;
+        }
+
+        .audience-item strong {
+            display: block;
+            margin-bottom: 0.2rem;
+            color: #1a3b5c;
+        }
+
+        /* 自然链接段落 */
+        .link-paragraph {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #e5eaef;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .link-paragraph a {
+            color: #17528a;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid #b8cde0;
+            transition: border-color 0.2s;
+        }
+
+        .link-paragraph a:hover {
+            border-bottom-color: #1a4a8a;
+        }
+
+        .link-paragraph .highlight-badge {
+            display: inline-block;
+            background: #eef2f9;
+            border-radius: 24px;
+            padding: 0.1rem 0.7rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #2b4d77;
+            margin-left: 0.2rem;
+            border: 1px solid #d6dfec;
+        }
+
+        /* FAQ 摘要卡片 (紧凑) */
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem 2rem 2rem;
+            border: 1px solid #e5eaef;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #1b2f42;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .faq-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #eff1f5;
+        }
+
+        .faq-row:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #2c4a6e;
+            min-width: 7rem;
+        }
+
+        .faq-a {
+            color: #3a4f68;
+        }
+
+        .faq-a a {
+            color: #1a4980;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dotted #b6c9df;
+        }
+
+        .faq-a a:hover {
+            border-bottom-style: solid;
+        }
+
+        /* 底部 */
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #68788c;
+            border-top: 1px solid #dee4ec;
+            padding-top: 1.8rem;
+            margin-top: 0.8rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 820px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.6rem;
+            }
+
+            .audience-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .hero-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .info-card {
+                padding: 1.8rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .hero-title {
+                font-size: 1.7rem;
+            }
+
+            .hero-sub {
+                font-size: 0.95rem;
+            }
+
+            .hero-link-sentence {
+                font-size: 0.9rem;
+                padding: 0.7rem 1.2rem;
+            }
+
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-row {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+
+            .faq-q {
+                min-width: auto;
+            }
+
+            .page-wrapper {
+                padding: 0 0.2rem;
+            }
+
+            body {
+                padding: 1rem 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <!-- 主视觉卡片 -->
+    <div class="hero-card">
+        <div class="hero-tag">稳定入口 · 信息说明</div>
+        <h1 class="hero-title">球探 · 信息汇聚</h1>
+        <p class="hero-sub">一个帮助使用者快速定位、浏览和整理相关内容的页面说明，保持入口清晰与结构简洁。</p>
+        <div class="hero-link-sentence">
+            日常使用中，很多人习惯直接将 <a href="https://web-qiutanscore.com">球探</a> 作为固定标签页。
+        </div>
+    </div>
+
+    <!-- 两列用途卡片 -->
+    <div class="card-grid">
+        <div class="info-card">
+            <div class="card-icon">📋</div>
+            <div class="card-title">内容索引</div>
+            <div class="card-desc">
+                将分散的信息归类为几个主要模块，方便快速浏览和参考。围绕用户关心的几个方向，做了基础整理。
+            </div>
+            <ul class="card-list">
+                <li>数据与信息总览</li>
+                <li>界面引导与分区</li>
+                <li>更新与状态提示</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <div class="card-icon">🔗</div>
+            <div class="card-title">稳定入口</div>
+            <div class="card-desc">
+                直接使用统一地址，减少中间跳转。适合用作浏览器书签或日常访问起始点。
+            </div>
+            <ul class="card-list">
+                <li>固定链接 · 无需额外查找</li>
+                <li>结构基本稳定</li>
+                <li>适合长期参考</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 适合人群 + 场景 (横向展开) -->
+    <div class="audience-card">
+        <div class="audience-header">
+            <span>适合人群 & 常见使用场景</span>
+        </div>
+        <div class="audience-grid">
+            <div class="audience-item">
+                <strong>日常浏览者</strong>
+                定期查看内容变化，保持对信息的跟进。
+            </div>
+            <div class="audience-item">
+                <strong>整理型用户</strong>
+                需要固定入口来归集常用链接和信息模块。
+            </div>
+            <div class="audience-item">
+                <strong>快速参考者</strong>
+                在需要确认某个数据或条目时，通过这个页面直接定位。
+            </div>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 (嵌入球探链接，无诱导词汇) -->
+    <div class="link-paragraph">
+        <p>
+            如果你需要经常回看某些内容，或者希望把重要的信息放在一个便于查找的位置，那么将
+            <a href="https://web-qiutanscore.com">球探</a> 
+            加入书签是个实用的做法。这个页面承担了类似门户的角色，提供相对稳定的组织方式，而不是每次临时搜索。
+            <span class="highlight-badge">固定</span>
+        </p>
+        <p style="margin-top: 0.8rem;">
+            另外，部分用户会把它作为工作流的起点——先打开
+            <a href="https://web-qiutanscore.com">球探</a>
+            ，再根据当天需要浏览相应的卡片分区。这种方式减少了重复操作。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要 (简洁卡片) -->
+    <div class="faq-mini">
+        <h3>❓ 常见问题摘要</h3>
+        <div class="faq-row">
+            <span class="faq-q">这个页面主要做什么？</span>
+            <span class="faq-a">作为信息说明和稳定入口，提供分块导航与内容索引。</span>
+        </div>
+        <div class="faq-row">
+            <span class="faq-q">链接是否长期不变？</span>
+            <span class="faq-a">主地址为 <a href="https://web-qiutanscore.com">球探</a>，保持固定。</span>
+        </div>
+        <div class="faq-row">
+            <span class="faq-q">适合哪些场景？</span>
+            <span class="faq-a">日常浏览、内容整理、快速参考等。</span>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>信息卡片介绍 · 版本说明</span>
+    </div>
+</div>
+</body>
+</html>
