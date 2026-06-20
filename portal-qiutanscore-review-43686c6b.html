@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球探 — 快速识别网站用途</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f2f5;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e1e2a;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 820px;
+            width: 100%;
+        }
+
+        /* hero 开场短句 */
+        .hero {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #3a3a4a;
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            display: inline-block;
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            border: 1px solid #d8dce6;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            letter-spacing: 0.02em;
+        }
+
+        /* 承接段落卡片 */
+        .intro-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0,0,0,0.02);
+            border: 1px solid #e4e7ee;
+        }
+
+        .intro-card p {
+            margin-bottom: 1.1rem;
+            font-size: 1rem;
+            color: #262636;
+        }
+
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-card a {
+            color: #2c5f8a;
+            text-decoration: none;
+            border-bottom: 1px solid #b6cadd;
+            transition: border-color 0.15s, color 0.15s;
+            font-weight: 450;
+        }
+
+        .intro-card a:hover {
+            border-bottom-color: #2c5f8a;
+            color: #1a405e;
+        }
+
+        /* 特点列表 — 卡片式网格 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.5rem 1.5rem 1.5rem 1.8rem;
+            border: 1px solid #e2e6ef;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .feature-item:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+        }
+
+        .feature-item h3 {
+            font-size: 1.05rem;
+            font-weight: 550;
+            margin-bottom: 0.45rem;
+            color: #1f2937;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #3d4452;
+            line-height: 1.5;
+        }
+
+        /* 温和结尾 + 场景提示 */
+        .closing-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            margin-top: 0.2rem;
+            border: 1px solid #e4e7ee;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .closing-section p {
+            margin-bottom: 1rem;
+            color: #2c2c3c;
+        }
+
+        .closing-section .small-note {
+            font-size: 0.88rem;
+            color: #5d6575;
+            border-left: 3px solid #cbd2e0;
+            padding-left: 1rem;
+            margin: 1.2rem 0 0.5rem;
+        }
+
+        .closing-section a {
+            color: #2c5f8a;
+            text-decoration: none;
+            border-bottom: 1px solid #bfcdde;
+            transition: border-color 0.15s;
+        }
+
+        .closing-section a:hover {
+            border-bottom-color: #1f4a6e;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #dde2ec;
+            margin: 1.8rem 0 1rem;
+            opacity: 0.5;
+        }
+
+        .faq-mini {
+            margin-top: 1.4rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.6rem;
+            padding: 0.5rem 0.8rem;
+            background: #f7f9fc;
+            border-radius: 10px;
+            border: 1px solid #e7eaf1;
+        }
+
+        .faq-mini summary {
+            font-weight: 480;
+            cursor: pointer;
+            color: #1f2a38;
+            padding: 0.15rem 0;
+        }
+
+        .faq-mini details p {
+            margin: 0.5rem 0 0.25rem;
+            font-size: 0.9rem;
+            color: #3c4557;
+            padding-left: 0.2rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .intro-card {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .feature-item {
+                padding: 1.2rem 1rem 1.2rem 1.4rem;
+            }
+
+            .closing-section {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0.5rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .intro-card, .closing-section {
+                padding: 1.2rem 0.9rem;
+            }
+        }
+
+        /* 极简 footer */
+        .footer-remark {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.78rem;
+            color: #7b8498;
+            letter-spacing: 0.3px;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 -->
+    <div class="hero">
+        <p>一个简洁的起点，确认网站用途。</p>
+    </div>
+
+    <!-- 承接段落 —— 自然介绍，嵌入链接 -->
+    <div class="intro-card">
+        <p>打开一个不熟悉的链接时，常常会想：这到底是做什么的？<strong>球探</strong> 所提供的，正是这样一份朴素但明确的答案。你不需要翻阅复杂文档，也不必猜测功能边界——页面本身会清晰地告诉你，这里处理什么、不处理什么。</p>
+        <p>如果你正在寻找一个能快速判断「球探」用途的地方，可以试试直接浏览 <a href="https://portal-qiutanscore.com">球探</a>。它的首页结构直白，没有多余装饰，信息层级一目了然。从标题到导航，你在几秒内就能建立起对网站核心服务的认知。</p>
+        <p>这种透明感，某种程度上比花哨的演示更重要。尤其当你时间有限，或者只是偶然路过一个链接时，一份直截了当的说明会节省不少精力。</p>
+    </div>
+
+    <!-- 特点列表（差异化表述，拒绝模板） -->
+    <div class="features-grid">
+        <div class="feature-item">
+            <h3>· 功能边界清晰</h3>
+            <p>不堆叠模糊的概念，每个板块对应具体可操作的内容。你能快速分辨哪些是自己需要的，哪些不属于这个平台。</p>
+        </div>
+        <div class="feature-item">
+            <h3>· 首页即目录</h3>
+            <p>无需注册或深度探索，首页的导航和段落概要基本概括了网站的能力范围与定位，像一份简洁的目录。</p>
+        </div>
+        <div class="feature-item">
+            <h3>· 弱化营销腔调</h3>
+            <p>页面文案偏重描述而非推销。它不会用“颠覆”“极致”这类词，而是更安静地告诉你它实际提供什么。</p>
+        </div>
+        <div class="feature-item">
+            <h3>· 适合快速判断</h3>
+            <p>如果你只是需要确认这个网站与自己的需求是否匹配，从打开到得到结论，通常只需要十几秒。</p>
+        </div>
+    </div>
+
+    <!-- 温和结尾 + 场景提示 + FAQ 摘要 -->
+    <div class="closing-section">
+        <p>总的来说，<a href="https://portal-qiutanscore.com">球探</a> 的定位并不复杂：它希望你用最短的时间理解它的用途，而不是在层层弹窗和宣传语里摸索。对用户来说，这种克制本身就是一种尊重。</p>
+        <p>也许你正处于这样的场景：在书签里看到一个旧链接，或者从某篇推荐里复制了一个地址，只想快速确认它是否还值得打开。那么不妨把它当作一个起点，而不是终点。</p>
+
+        <div class="small-note">
+            ⚬ 提示：网站所有公开信息均可在首页直接浏览，无需登录。
+        </div>
+
+        <hr>
+
+        <!-- 迷你 FAQ（克制，不夸张） -->
+        <div class="faq-mini">
+            <details>
+                <summary>“球探”适合哪些人？</summary>
+                <p>基本适合任何想了解该网站功能范围的人。无论你是普通用户、产品评估者，还是单纯好奇的访客，首页提供的信息都足够直接。</p>
+            </details>
+            <details>
+                <summary>需要注册才能看到内容吗？</summary>
+                <p>首页所有介绍性内容和功能概览均无需注册或登录。部分交互功能可能需要账户，但用途说明在首页已经列出。</p>
+            </details>
+        </div>
+    </div>
+
+    <div class="footer-remark">
+        —— 叙事 · 球探用途简述
+    </div>
+</div>
+</body>
+</html>
